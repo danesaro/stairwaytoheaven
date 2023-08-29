@@ -1,13 +1,7 @@
-/**
-* Template Name: UpConstruction - v1.3.0
-* Template URL: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 /*--------------------------------------------------------------
-# Set main reusable colors and fonts using CSS variables
-# Learn more about CSS variables at https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+# Se establecen colores y fuentes principales reutilizables mediante variables CSS
+# Documentación acerca de esto está disponible en: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
@@ -32,7 +26,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  /*---- font-family: var(--font-default); */
+  font-family: var(--font-default);
   color: var(--color-default);
   overflow-x: hidden;
 }
@@ -2691,4 +2685,10 @@ section {
 
 .centered {
   text-align: center;
+}
+
+.social-media-icons {
+  width: 30px; 
+  height: 30px; 
+  border-radius: 10px; /* Valor que define el redondeo de los bordes */
 }
