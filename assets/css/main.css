@@ -3,6 +3,10 @@
 # Se establecen colores y fuentes principales reutilizables mediante variables CSS
 # Documentación acerca de esto está disponible en: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
 --------------------------------------------------------------*/
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 /* Fonts */
 :root {
   --font-default: "Poppins";
