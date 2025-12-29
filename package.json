@@ -1,7 +1,5 @@
 {
-  "name": "stairway-to-heaven",
+  "name": "stairwaytoheaven",
   "version": "1.0.0",
-  "scripts": {
-    "build": "echo 'No build needed'"
-  }
+  "scripts": {}
 }
