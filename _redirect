@@ -1,6 +1,0 @@
-/contactanos          /contact.html   200
-/inicio               /index.html     200
-/acerca-de-nosotros   /about.html     200
-/servicios            /services.html  200
-/galeria              /projects.html  200
-/*                    /:splat.html    200
