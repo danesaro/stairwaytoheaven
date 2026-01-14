@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,7 +16,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -32,10 +34,10 @@
 
 
 
-<!-- Agrega los archivos JavaScript de Bootstrap y jQuery para el carrusel -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Agrega los archivos JavaScript de Bootstrap y jQuery para el carrusel -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
   <!-- =======================================================
@@ -52,8 +54,8 @@
   <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets\img\Logos\Foto de perfil rounded.png" alt=""> 
+      <a href="/inicio" class="logo d-flex align-items-center">
+        <img src="assets/img/Logos/Foto de perfil rounded.png" alt="">
         <h1>Gradas&Gradas<span>.</span></h1>
       </a>
 
@@ -61,14 +63,17 @@
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="about.html">Acerca de nosotros</a></li>
-          <li><a href="services.html" class="active">Servicios</a></li>
-          <li><a href="projects.html">Galería</a></li>
-          <li><a href="contact.html">Contáctanos</a></li>
-          <li><a href="https://wa.link/gradasygradas" target = "_blank"><img src="assets\img\Logos\Whatsapp.png" alt="Enlace a Whatsapp" width="30" height="30"></a></li>
-          <li><a href="https://www.facebook.com/gradasygradas" target = "_blank"><img src="assets/img/Logos/Facebook.png" alt="Enlace a Facebook" width="30" height="30"></a></li>
-          <li><a href="https://www.instagram.com/gradasygradas" target = "_blank"><img src="assets/img/Logos/IG.png" alt="Enlace a Instagram" width="30" height="30"></a></li>
+          <li><a href="/inicio">Inicio</a></li>
+          <li><a href="/acerca-de-nosotros">Acerca de nosotros</a></li>
+          <li><a href="/servicios" class="active">Servicios</a></li>
+          <li><a href="/galeria">Galería</a></li>
+          <li><a href="/contactanos">Contáctanos</a></li>
+          <li><a href="https://wa.link/gradasygradas" target="_blank"><img src="assets/img/Logos/Whatsapp.png"
+                alt="Enlace a Whatsapp" width="30" height="30"></a></li>
+          <li><a href="https://www.facebook.com/gradasygradas" target="_blank"><img src="assets/img/Logos/Facebook.png"
+                alt="Enlace a Facebook" width="30" height="30"></a></li>
+          <li><a href="https://www.instagram.com/gradasygradas" target="_blank"><img src="assets/img/Logos/IG.png"
+                alt="Enlace a Instagram" width="30" height="30"></a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -83,7 +88,7 @@
 
         <h2>Servicios</h2>
         <ol>
-          <li><a href="index.html">Inicio</a></li>
+          <li><a href="/inicio">Inicio</a></li>
           <li>Servicios</li>
         </ol>
 
@@ -91,85 +96,97 @@
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Services Section ======= -->
-<section id="services" class="services section-bg">
-  <div class="container" data-aos="fade-up">
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
 
-    <div class="section-header">
-      <h2>Servicios</h2>
-    </div>
-
-    <div class="row gy-4">
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="service-item  position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-stairs"></i>
-          </div> 
-          <h3>Diseño y fabricación de gradas</h3>
-          <p>Creamos gradas de excelente calidad que se adaptan perfectamente a tus necesidades y estilo.</p>
-          <a href="service-details.html" class="readmore stretched-link">Ver más <i class="bi bi-arrow-right"></i></a>
+        <div class="section-header">
+          <h2>Servicios</h2>
         </div>
-      </div><!-- End Service Item -->
 
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-arrow-up-from-ground-water"></i>
-          </div>
-          <h3>Instalación de gradas</h3>
-          <p>Nuestro equipo se encarga de la instalación precisa y segura de tus escaleras. Nos aseguramos de que cada paso sea seguro y esté en perfecta armonía con el diseño general.</p>
-          <a href="service-details.html" class="readmore stretched-link">Ver más <i class="bi bi-arrow-right"></i></a>
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item  position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-stairs"></i>
+              </div>
+              <h3>Diseño y fabricación de gradas</h3>
+              <p>Creamos gradas de excelente calidad que se adaptan perfectamente a tus necesidades y estilo.</p>
+              <a href="service-details.html" class="readmore stretched-link">Ver más <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-arrow-up-from-ground-water"></i>
+              </div>
+              <h3>Instalación de gradas</h3>
+              <p>Nuestro equipo se encarga de la instalación precisa y segura de tus escaleras. Nos aseguramos de que
+                cada paso sea seguro y esté en perfecta armonía con el diseño general.</p>
+              <a href="service-details.html" class="readmore stretched-link">Ver más <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-pen-ruler"></i>
+              </div>
+              <h3>Asesoría en espacios reducidos</h3>
+              <p>Especializados en optimizar espacios, te ofrecemos soluciones inteligentes para maximizar la utilidad
+                de áreas pequeñas. </p>
+              <a href="service-details.html" class="readmore stretched-link">Ver más <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+              <h3>Provisión de pasamanos</h3>
+              <p>Ofrecemos una amplia gama de diseños de barandillas y pasamanos que complementan perfectamente tus
+                gradas. Desde estilos modernos hasta acabados clásicos, damos importancia a la seguridad y la estética.
+              </p>
+              <a href="service-details.html" class="readmore stretched-link">Ver más <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-helmet-safety"></i>
+              </div>
+              <h3>Mantenimiento y reparación de gradas</h3>
+              <p>No solo creamos gradas, también nos preocupamos por su mantenimiento a largo plazo. Ofrecemos servicios
+                de mantenimiento y reparación para garantizar que tus gradas se mantengan en perfectas condiciones.</p>
+              <a href="service-details.html" class="readmore stretched-link">Ver más <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-toolbox"></i>
+              </div>
+              <h3>Remodelación y renovación de escaleras existentes</h3>
+              <p>Transformamos escaleras existentes en estructuras renovadas y modernas. Ya sea una actualización de
+                diseño o una mejora en la funcionalidad, podemos revitalizar tus escaleras.</p>
+              <a href="service-details.html" class="readmore stretched-link">Ver más <i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
         </div>
-      </div><!-- End Service Item -->
 
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-pen-ruler"></i>
-          </div>
-          <h3>Asesoría en espacios reducidos</h3>
-          <p>Especializados en optimizar espacios, te ofrecemos soluciones inteligentes para maximizar la utilidad de áreas pequeñas. </p>
-          <a href="service-details.html" class="readmore stretched-link">Ver más <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div><!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-layer-group"></i>
-          </div>
-          <h3>Provisión de pasamanos</h3>
-          <p>Ofrecemos una amplia gama de diseños de barandillas y pasamanos que complementan perfectamente tus gradas. Desde estilos modernos hasta acabados clásicos, damos importancia a la seguridad y la estética.</p>
-          <a href="service-details.html" class="readmore stretched-link">Ver más <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div><!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-helmet-safety"></i>
-          </div>
-          <h3>Mantenimiento y reparación de gradas</h3>
-          <p>No solo creamos gradas, también nos preocupamos por su mantenimiento a largo plazo. Ofrecemos servicios de mantenimiento y reparación para garantizar que tus gradas se mantengan en perfectas condiciones.</p>
-          <a href="service-details.html" class="readmore stretched-link">Ver más <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div><!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-toolbox"></i>
-          </div>
-          <h3>Remodelación y renovación de escaleras existentes</h3>
-          <p>Transformamos escaleras existentes en estructuras renovadas y modernas. Ya sea una actualización de diseño o una mejora en la funcionalidad, podemos revitalizar tus escaleras.</p>
-          <a href="service-details.html" class="readmore stretched-link">Ver más <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div><!-- End Service Item -->
-
-    </div>
-
-  </div>
-</section><!-- End Services Section -->
+      </div>
+    </section><!-- End Services Section -->
 
 
     <!-- ======= Service Cards Section 
@@ -222,7 +239,7 @@
         </div>
         
       </div>
-    </section><!-- End Servie Cards Section --> 
+    </section><!-- End Servie Cards Section -->
 
     <!-- ======= Alt Services Section 2 ======= -->
     <section id="alt-services-2" class="alt-services section-bg">
@@ -231,13 +248,16 @@
         <div class="row justify-content-around gy-4">
           <div class="col-lg-5 d-flex flex-column justify-content-center">
             <h3>Servicios de calidad superior</h3>
-            <p>En Gradas & Gradas, nos enorgullece ofrecer servicios de la más alta calidad para satisfacer tus necesidades. Estamos comprometidos en brindarte resultados excepcionales y un excelente servicio que te sorprenderá.</p>
+            <p>En Gradas & Gradas, nos enorgullece ofrecer servicios de la más alta calidad para satisfacer tus
+              necesidades. Estamos comprometidos en brindarte resultados excepcionales y un excelente servicio que te
+              sorprenderá.</p>
 
             <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
               <i class="bi bi-easel flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Atención personalizada</a></h4>
-                <p>Trabajamos contigo de manera cercana y colaborativa para comprender tus necesidades específicas y crear un producto final que sea verdaderamente tuyo.</p>
+                <p>Trabajamos contigo de manera cercana y colaborativa para comprender tus necesidades específicas y
+                  crear un producto final que sea verdaderamente tuyo.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -245,7 +265,8 @@
               <i class="bi bi-patch-check flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Calidad en los detalles</a></h4>
-                <p>Nuestro compromiso con la calidad se refleja en cada detalle de nuestros proyectos. Creemos que la calidad es un compromiso constante, y eso es lo que traemos a cada proyecto.</p>
+                <p>Nuestro compromiso con la calidad se refleja en cada detalle de nuestros proyectos. Creemos que la
+                  calidad es un compromiso constante, y eso es lo que traemos a cada proyecto.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -253,7 +274,8 @@
               <i class="bi bi-brightness-high flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Experiencia y excelencia</a></h4>
-                <p>Nos enorgullece nuestra experiencia y excelencia en la industria. Estamos comprometidos a aplicar esta experiencia y conocimiento a tu proyecto para lograr resultados excepcionales.</p>
+                <p>Nos enorgullece nuestra experiencia y excelencia en la industria. Estamos comprometidos a aplicar
+                  esta experiencia y conocimiento a tu proyecto para lograr resultados excepcionales.</p>
               </div>
             </div><!-- End Icon Box -->
 
@@ -261,14 +283,17 @@
               <i class="bi bi-brightness-high flex-shrink-0"></i>
               <div>
                 <h4><a href="" class="stretched-link">Dedicación en cada paso</a></h4>
-                <p>Nos dedicamos por completo a cada proyecto que emprendemos. Esto significa que no escatimamos esfuerzos en brindarte soluciones que superen tus expectativas. Nuestro equipo trabaja arduamente para garantizar que cada proyecto sea un éxito y que refleje nuestra dedicación a la excelencia.</p>
+                <p>Nos dedicamos por completo a cada proyecto que emprendemos. Esto significa que no escatimamos
+                  esfuerzos en brindarte soluciones que superen tus expectativas. Nuestro equipo trabaja arduamente para
+                  garantizar que cada proyecto sea un éxito y que refleje nuestra dedicación a la excelencia.</p>
               </div>
             </div><!-- End Icon Box -->
           </div>
 
-          
 
-          <div class="col-lg-6 img-bg" style="background-image: url(assets/img/services/servicios-1.webp);" data-aos="zoom-in" data-aos-delay="100"></div>
+
+          <div class="col-lg-6 img-bg" style="background-image: url(assets/img/services/servicios-1.webp);"
+            data-aos="zoom-in" data-aos-delay="100"></div>
         </div>
 
       </div>
@@ -321,8 +346,8 @@
         </div>
 
       </div>
-    </section><!-- End Alt Services Section --> 
-    
+    </section><!-- End Alt Services Section -->
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -342,9 +367,12 @@
                 <strong>Correo electrónico:</strong> contacto@gradasygradas.com<br>
               </p>
               <div class="social-links d-flex mt-3">
-                <a href="https://wa.link/gradasygradas" target="_blank" class="d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
-                <a href="https://www.facebook.com/gradasygradas" target="_blank" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
-                <a href="https://www.instagram.com/gradasygradas" target="_blank" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.link/gradasygradas" target="_blank"
+                  class="d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.facebook.com/gradasygradas" target="_blank"
+                  class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/gradasygradas" target="_blank"
+                  class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
           </div><!-- End footer info column-->
@@ -353,8 +381,8 @@
             <h4>Enlaces útiles</h4>
             <ul>
               <li><a href="#">Inicio</a></li>
-              <li><a href="about.html">Acerca de nosotros</a></li>
-              <li><a href="services.html">Servicios</a></li>
+              <li><a href="/acerca-de-nosotros">Acerca de nosotros</a></li>
+              <li><a href="/servicios">Servicios</a></li>
               <li><a href="guarantee.html">Garantía</a></li>
             </ul>
           </div><!-- End footer links column-->
@@ -392,7 +420,8 @@
   </footer>
   <!-- End Footer -->
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
 
