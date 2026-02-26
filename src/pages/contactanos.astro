@@ -1,0 +1,128 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Contáctanos - Gradas &amp; Gradas">
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div
+      class="breadcrumbs d-flex align-items-center"
+      style="background-image: url('/assets/img/breadcrumbs-bg.jpg');"
+    >
+      <div
+        class="container position-relative d-flex flex-column align-items-center"
+        data-aos="fade"
+      >
+        <h2>Contacto</h2>
+        <ol>
+          <li><a href="/inicio">Inicio</a></li>
+          <li>Contáctanos</li>
+        </ol>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-map"></i>
+              <h3>Dirección</h3>
+              <p>Calle 84 Norte #8N-36, Ciudadela Floralia, Cali, Valle del Cauca</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-envelope"></i>
+              <h3 class="centered">Envíanos un correo electrónico</h3>
+              <p>contacto@gradasygradas.com</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-telephone"></i>
+              <h3 class="centered">Envíanos un WhatsApp o llámanos</h3>
+              <p>+57 316 576 3232</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gy-4 mt-1">
+          <div class="col-lg-6">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63719.33809554104!2d-76.51444165940936!3d3.480627875092826!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a866d9b01aeb%3A0xca068ee91fc09954!2sgradas%20%26%20gradas!5e0!3m2!1ses!2sco!4v1677703512786!5m2!1ses!2sco"
+              frameborder="0"
+              style="border: 0; width: 100%; height: 384px;"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="col-lg-6">
+            <form
+              action="/api/contact"
+              method="post"
+              role="form"
+              class="php-email-form"
+            >
+              <div class="row gy-4">
+                <div class="col-lg-6 form-group">
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
+                <div class="col-lg-6 form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="subject"
+                  id="subject"
+                  placeholder="Subject"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  class="form-control"
+                  name="message"
+                  rows="5"
+                  placeholder="Message"
+                  required
+                ></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center">
+                <button type="submit">Enviar mensaje</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Contact Section -->
+  </main>
+</MainLayout>
+

@@ -1,0 +1,17 @@
+{
+  "name": "stairwaytoheaven",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^9.0.4",
+    "astro": "^5.0.0",
+    "resend": "^6.9.2"
+  }
+}
