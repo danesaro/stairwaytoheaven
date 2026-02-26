@@ -61,48 +61,25 @@ const isActive = (href: string) => currentPath === href;
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
           <ul>
+            <li><a href="/inicio" class={isActive('/inicio') ? 'active' : ''}>Inicio</a></li>
+            <li><a href="/acerca-de-nosotros" class={isActive('/acerca-de-nosotros') ? 'active' : ''}>Acerca de nosotros</a></li>
+            <li><a href="/servicios" class={isActive('/servicios') ? 'active' : ''}>Servicios</a></li>
+            <li><a href="/galeria" class={isActive('/galeria') ? 'active' : ''}>Galería</a></li>
+            <li><a href="/contactanos" class={isActive('/contactanos') ? 'active' : ''}>Contáctanos</a></li>
             <li>
-              <a href="/inicio" class={isActive('/inicio') ? 'active' : ''}>Inicio</a>
-            </li>
-            <li>
-              <a href="/acerca-de-nosotros" class={isActive('/acerca-de-nosotros') ? 'active' : ''}>
-                Acerca de nosotros
+              <a href="https://wa.link/gradasygradas" target="_blank">
+                <img src="/assets/img/logos/whatsapp.png" alt="Enlace a Whatsapp" width="30" height="30" />
               </a>
             </li>
             <li>
-              <a href="/servicios" class={isActive('/servicios') ? 'active' : ''}>Servicios</a>
+              <a href="https://www.facebook.com/gradasygradas" target="_blank">
+                <img src="/assets/img/logos/facebook.png" alt="Enlace a Facebook" width="30" height="30" />
+              </a>
             </li>
             <li>
-              <a href="/galeria" class={isActive('/galeria') ? 'active' : ''}>Galería</a>
-            </li>
-            <li>
-              <a href="/contactanos" class={isActive('/contactanos') ? 'active' : ''}>Contáctanos</a>
-            </li>
-              <a href="https://wa.link/gradasygradas" target="_blank"
-                ><img
-                  src="/assets/img/logos/whatsapp.png"
-                  alt="Enlace a Whatsapp"
-                  width="30"
-                  height="30"
-              /></a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/gradasygradas" target="_blank"
-                ><img
-                  src="/assets/img/logos/facebook.png"
-                  alt="Enlace a Facebook"
-                  width="30"
-                  height="30"
-              /></a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/gradasygradas" target="_blank"
-                ><img
-                  src="/assets/img/logos/instagram.png"
-                  alt="Enlace a Instagram"
-                  width="30"
-                  height="30"
-              /></a>
+              <a href="https://www.instagram.com/gradasygradas" target="_blank">
+                <img src="/assets/img/logos/instagram.png" alt="Enlace a Instagram" width="30" height="30" />
+              </a>
             </li>
           </ul>
         </nav>
