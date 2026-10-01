@@ -63,6 +63,17 @@ const isActive = (href: string) => (href === '/' ? currentPath === '/' : current
 </header>
 
 <script>
+  const header = document.getElementById('header');
+  if (header) {
+    const updateHeaderHeight = () => {
+      document.documentElement.style.setProperty(
+        '--header-height',
+        `${header.getBoundingClientRect().height}px`,
+      );
+    };
+    new ResizeObserver(updateHeaderHeight).observe(header);
+    updateHeaderHeight();
+  }
   const toggle = document.querySelector<HTMLButtonElement>('.mobile-nav-toggle');
   const navbar = document.getElementById('navbar');
 
@@ -128,10 +139,11 @@ const isActive = (href: string) => (href === '/' ? currentPath === '/' : current
 </script>
 
 <style is:global>
-  /* Cabecera en flujo: reserva espacio también en móviles de poca altura. */
+  /* Sticky conserva su espacio y acompaña el scroll sin superponer el hero. */
   .editorial-site .header {
     z-index: 997;
-    position: relative;
+    position: sticky;
+    top: 0;
     padding: 26px 0;
     border-bottom: 1px solid var(--line);
     background: var(--surface-base);

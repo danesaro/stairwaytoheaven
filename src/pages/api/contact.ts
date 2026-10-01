@@ -66,7 +66,8 @@ async function readPayload(request: Request): Promise<Record<string, string>> {
 }
 
 export const POST: APIRoute = async ({ request }) => {
-  const apiKey = import.meta.env.RESEND_API_KEY;
+  // Vercel Functions recibe variables en runtime. El fallback conserva .env local.
+  const apiKey = process.env.RESEND_API_KEY?.trim() || import.meta.env.RESEND_API_KEY?.trim();
   if (!apiKey) {
     console.error('Falta RESEND_API_KEY: el formulario de contacto no puede enviar correos.');
     return json({ ok: false, error: 'El servicio de contacto no está disponible en este momento.' }, 503);

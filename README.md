@@ -132,7 +132,14 @@ distintas de Vercel Functions; si el volumen de spam lo justifica, moverlo a Ver
 ## Notas de despliegue
 
 - Las variables de entorno se configuran en el panel de Vercel (`RESEND_API_KEY`).
+- Seleccionar el entorno **Production** al guardar la clave y generar un **nuevo
+  despliegue**. Añadirla no actualiza las funciones de un despliegue anterior.
+- La API lee la clave en tiempo de ejecución desde `process.env`, con fallback
+  para desarrollo local. Un 503 con «El servicio de contacto no está disponible»
+  indica que la función no encuentra la clave; un 502 indica un fallo al enviar.
 - El remitente `no-reply@mail.gradasygradas.com` debe estar verificado en Resend.
+- Si el envío falla, el formulario conserva los campos y ofrece enviarlos por
+  WhatsApp mediante un enlace que el usuario puede abrir.
 - Los assets con hash bajo `/_astro/` usan caché inmutable. Los archivos de `/assets/`
   se revalidan para que una actualización de CSS, JS o imagen OG llegue al navegador.
 

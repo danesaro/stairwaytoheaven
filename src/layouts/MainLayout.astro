@@ -25,6 +25,21 @@ const fontsUrl =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- La página entrante debe optar por la transición antes de pagereveal.
+         No mover estas reglas a CSS externo: con latencia se descarta la transición. -->
+    <style is:inline>
+      @view-transition {
+        navigation: auto;
+      }
+      main {
+        view-transition-name: page-content;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        @view-transition {
+          navigation: none;
+        }
+      }
+    </style>
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content={site.themeColor} />
 

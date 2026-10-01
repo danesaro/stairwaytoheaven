@@ -1,4 +1,6 @@
 ---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
 interface Props {
   /** Prefijo único para asociar los labels y la ayuda a cada campo. */
   idPrefix: string;
@@ -7,7 +9,7 @@ interface Props {
 const { idPrefix } = Astro.props;
 ---
 
-<form class="contact-form" action="/api/contact" method="post">
+<form class="contact-form" action="/api/contact" method="post" data-whatsapp={site.whatsapp}>
   <div class="form-fields">
     <div>
       <label for={`${idPrefix}-name`}>Nombre</label>
@@ -78,6 +80,15 @@ const { idPrefix } = Astro.props;
         muestra, muchos lectores de pantalla no la anuncian.
       -->
       <p class="form-status" role="status" aria-live="polite"></p>
+      <a
+        class="form-fallback editorial-text-link"
+        href={site.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        hidden
+      >
+        <Icon name="whatsapp" /> Enviar estos datos por WhatsApp
+      </a>
 
       <button type="submit">Enviar mensaje</button>
     </div>
@@ -94,6 +105,25 @@ const { idPrefix } = Astro.props;
   document.querySelectorAll<HTMLFormElement>('.contact-form').forEach((form) => {
     const status = form.querySelector<HTMLElement>('.form-status');
     const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const fallback = form.querySelector<HTMLAnchorElement>('.form-fallback');
+
+    const offerWhatsApp = (payload: Record<string, FormDataEntryValue>) => {
+      if (!fallback || !form.dataset.whatsapp) return;
+      const url = new URL(form.dataset.whatsapp);
+      url.searchParams.set(
+        'text',
+        [
+          'Hola, quisiera consultar sobre gradas prefabricadas, mantenimiento o remodelación.',
+          `Nombre: ${payload.name}`,
+          `Correo: ${payload.email}`,
+          ...(payload.phone ? [`Celular: ${payload.phone}`] : []),
+          '',
+          String(payload.message ?? ''),
+        ].join('\n'),
+      );
+      fallback.href = url.href;
+      fallback.hidden = false;
+    };
 
     const setStatus = (message: string, state: 'loading' | 'success' | 'error') => {
       if (!status) return;
@@ -112,6 +142,7 @@ const { idPrefix } = Astro.props;
       if (payload.website) return;
 
       setStatus('Enviando tu mensaje…', 'loading');
+      if (fallback) fallback.hidden = true;
       button?.setAttribute('disabled', '');
 
       try {
@@ -125,6 +156,7 @@ const { idPrefix } = Astro.props;
 
         if (!response.ok || !result?.ok) {
           setStatus(result?.error || MESSAGES.generic, 'error');
+          if (response.status >= 500) offerWhatsApp(payload);
           return;
         }
 
@@ -132,6 +164,7 @@ const { idPrefix } = Astro.props;
         setStatus(MESSAGES.success, 'success');
       } catch {
         setStatus(MESSAGES.network, 'error');
+        offerWhatsApp(payload);
       } finally {
         button?.removeAttribute('disabled');
       }
@@ -234,6 +267,12 @@ const { idPrefix } = Astro.props;
   .form-status[data-state='error'] {
     background: #f4e0d9;
     color: #842f20;
+  }
+  .form-fallback[hidden] {
+    display: none !important;
+  }
+  .form-fallback {
+    margin-bottom: 16px;
   }
   .form-honeypot {
     position: absolute !important;

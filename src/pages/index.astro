@@ -6,7 +6,7 @@ import FeaturedProject from '../components/FeaturedProject.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { site } from '../data/site';
 import { homeSolutions, selectedWorks } from '../data/home';
-import prefabricatedStair from '../assets/img/projects/GradaLibre-1.webp';
+import heroPhoto from '../assets/img/hero/hero-portada.png';
 import workshop from '../assets/img/services/servicios-1.webp';
 
 const whatsapp = site.whatsapp;
@@ -44,8 +44,9 @@ const whatsapp = site.whatsapp;
       </div>
       <figure class="home-hero-photo">
         <Image
-          src={prefabricatedStair}
-          alt="Grada caracol exterior con peldaños claros y pasamanos metálico junto a una vivienda"
+          src={heroPhoto}
+          alt="Escalera caracol blanca con pasamanos metálico frente a una vivienda de ventanas azules"
+          style="object-position: 70% center;"
           width={1000}
           widths={[480, 720, 1000]}
           sizes="(min-width: 1280px) 590px, (min-width: 900px) 45vw, calc(100vw - 40px)"

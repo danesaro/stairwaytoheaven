@@ -1,6 +1,7 @@
 /* Base del sitio editorial: solo las utilidades utilizadas en las páginas. */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height, 104px) + 16px);
   overflow-x: clip;
 }
 body {
@@ -71,13 +72,7 @@ img {
   }
 }
 
-/* Transiciones entre documentos: primera carga inmediata y fallback nativo. */
-@view-transition {
-  navigation: auto;
-}
-main {
-  view-transition-name: page-content;
-}
+/* Efectos de navegación. La activación crítica está inline en MainLayout. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -109,9 +104,6 @@ main {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  @view-transition {
-    navigation: none;
-  }
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
