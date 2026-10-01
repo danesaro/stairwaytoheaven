@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gradas &amp; Gradas">
+  <rect width="64" height="64" rx="12" fill="#282722"/>
+  <g fill="none" stroke="#feb900" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 10C7 10 7 28 32 31M32 31C57 31 57 50 32 54" stroke-width="4"/>
+    <path d="M15 16V24M23 12V28M42 33V50M50 39V45" stroke-width="3"/>
+    <path d="M14 21H32M12 27H32M21 34H32M32 37H50M32 43H53M32 49H48M32 55H40" stroke-width="4"/>
+    <path d="M32 9V55" stroke-width="6"/>
+  </g>
+</svg>

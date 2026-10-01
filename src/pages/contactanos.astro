@@ -1,128 +1,74 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import Icon from '../components/Icon.astro';
+import PageIntro from '../components/PageIntro.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { fullAddress, site } from '../data/site';
+const query = encodeURIComponent(`${site.name} ${fullAddress}`);
+const mapLink = `https://www.google.com/maps/search/?api=1&query=${query}`;
 ---
 
-<MainLayout title="Contáctanos - Gradas &amp; Gradas">
-  <main id="main">
-    <!-- ======= Breadcrumbs ======= -->
-    <div
-      class="breadcrumbs d-flex align-items-center"
-      style="background-image: url('/assets/img/breadcrumbs-bg.jpg');"
-    >
-      <div
-        class="container position-relative d-flex flex-column align-items-center"
-        data-aos="fade"
-      >
-        <h2>Contacto</h2>
-        <ol>
-          <li><a href="/inicio">Inicio</a></li>
-          <li>Contáctanos</li>
-        </ol>
+<MainLayout
+  title="Contáctanos"
+  description="Consulta gradas prefabricadas, mantenimiento o remodelación de escaleras en Cali. Cotiza con Gradas & Gradas por WhatsApp o déjanos un mensaje."
+  path="/contactanos"
+>
+  <main id="main" class="editorial-interior">
+    <PageIntro
+      eyebrow="Tu proyecto empieza aquí"
+      title="Cuéntanos qué quieres mejorar."
+      description="Gradas prefabricadas para tu obra, mantenimiento o remodelación de tu escalera actual. Escríbenos y conversemos sobre lo que necesitas."
+    />
+    <section class="editorial-shell contact-editorial-layout" aria-label="Iniciar una consulta">
+      <div class="home-contact-copy">
+        <a class="editorial-button" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+          <Icon name="whatsapp" /> Cotizar por WhatsApp
+        </a>
+        <a class="editorial-text-link contact-call" href={`tel:${site.phoneHref}`}>
+          Llamar al {site.phone}
+        </a>
+        <div class="home-contact-guide">
+          <h2>Para empezar, puedes compartir:</h2>
+          <ul>
+            <li>Qué necesitas y dónde sería la instalación.</li>
+            <li>Una fotografía del espacio o de tu escalera actual.</li>
+            <li>Medidas aproximadas, si las tienes.</li>
+          </ul>
+          <p>No necesitas tener todos los detalles resueltos.</p>
+        </div>
+        <a class="editorial-text-link contact-email" href={`mailto:${site.email}`}>
+          {site.email}
+        </a>
       </div>
-    </div>
-    <!-- End Breadcrumbs -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="col-lg-6">
-            <div class="info-item d-flex flex-column justify-content-center align-items-center">
-              <i class="bi bi-map"></i>
-              <h3>Dirección</h3>
-              <p>Calle 84 Norte #8N-36, Ciudadela Floralia, Cali, Valle del Cauca</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-item d-flex flex-column justify-content-center align-items-center">
-              <i class="bi bi-envelope"></i>
-              <h3 class="centered">Envíanos un correo electrónico</h3>
-              <p>gradasygradascali@gmail.com</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-item d-flex flex-column justify-content-center align-items-center">
-              <i class="bi bi-telephone"></i>
-              <h3 class="centered">Envíanos un WhatsApp o llámanos</h3>
-              <p>+57 316 576 3232</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row gy-4 mt-1">
-          <div class="col-lg-6">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63719.33809554104!2d-76.51444165940936!3d3.480627875092826!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a866d9b01aeb%3A0xca068ee91fc09954!2sgradas%20%26%20gradas!5e0!3m2!1ses!2sco!4v1677703512786!5m2!1ses!2sco"
-              frameborder="0"
-              style="border: 0; width: 100%; height: 384px;"
-              allowfullscreen
-            ></iframe>
-          </div>
-
-          <div class="col-lg-6">
-            <form
-              action="/api/contact"
-              method="post"
-              role="form"
-              class="php-email-form"
-            >
-              <div class="row gy-4">
-                <div class="col-lg-6 form-group">
-                  <input
-                    type="text"
-                    name="name"
-                    class="form-control"
-                    id="name"
-                    placeholder="Your Name"
-                    required
-                  />
-                </div>
-                <div class="col-lg-6 form-group">
-                  <input
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    id="email"
-                    placeholder="Your Email"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="subject"
-                  id="subject"
-                  placeholder="Subject"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <textarea
-                  class="form-control"
-                  name="message"
-                  rows="5"
-                  placeholder="Message"
-                  required
-                ></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center">
-                <button type="submit">Enviar mensaje</button>
-              </div>
-            </form>
-          </div>
-        </div>
+      <div class="home-contact-form-panel">
+        <h2>¿Prefieres dejarnos un mensaje?</h2>
+        <p>Completa estos datos y nos pondremos en contacto contigo.</p>
+        <ContactForm idPrefix="contact" />
       </div>
     </section>
-    <!-- End Contact Section -->
+    <section class="contact-location editorial-section">
+      <div class="editorial-shell contact-location-layout">
+        <div>
+          <p class="editorial-eyebrow">Encuéntranos en Cali</p>
+          <h2>Nuestro punto de encuentro.</h2>
+          <address>{fullAddress}</address>
+          <p>
+            Lunes a viernes: 8:00 a. m.–6:00 p. m.
+            <br />
+            Sábados: 8:00 a. m.–1:00 p. m.
+          </p>
+          <a class="editorial-text-link" href={mapLink} target="_blank" rel="noopener noreferrer">
+            Ver en Google Maps <Icon name="arrow-up-right" />
+          </a>
+        </div>
+        <iframe
+          src={`https://www.google.com/maps?q=${query}&output=embed`}
+          title={`Ubicación de ${site.name} en Cali`}
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        />
+      </div>
+    </section>
   </main>
 </MainLayout>
-

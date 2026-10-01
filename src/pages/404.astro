@@ -1,0 +1,68 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title="Página no encontrada"
+  description="La página que buscas no existe o fue movida."
+  path="/404"
+>
+  <main id="main">
+    <section id="error-404" class="error-404 d-flex align-items-center">
+      <div class="error-content">
+        <h1>404</h1>
+        <h2>Página no encontrada</h2>
+        <p>La página que buscas no existe o fue movida. Te dejamos algunos enlaces útiles:</p>
+        <ul class="error-links">
+          <li>
+            <a href="/">Inicio</a>
+          </li>
+          <li>
+            <a href="/servicios">Servicios</a>
+          </li>
+          <li>
+            <a href="/galeria">Galería</a>
+          </li>
+          <li>
+            <a href="/contactanos">Contáctanos</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</MainLayout>
+
+<style>
+  .error-content {
+    width: min(100% - 40px, 1240px);
+    margin-inline: auto;
+    text-align: center;
+  }
+  .error-links {
+    list-style: none;
+    padding-left: 0;
+  }
+  .error-404 {
+    min-height: 60vh;
+    padding: 140px 0 80px;
+  }
+
+  .error-404 h1 {
+    font-size: 7rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .error-404 h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+  }
+
+  .error-404 p {
+    margin-bottom: 24px;
+  }
+</style>

@@ -1,0 +1,23 @@
+{
+  "name": "Gradas & Gradas",
+  "short_name": "Gradas & Gradas",
+  "description": "Gradas y escaleras en granito, mármol y concreto en Cali.",
+  "lang": "es-CO",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#feb900",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

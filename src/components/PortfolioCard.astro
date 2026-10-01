@@ -1,0 +1,70 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Icon from './Icon.astro';
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  priority?: boolean;
+}
+
+const { project, priority = false } = Astro.props;
+
+// La miniatura y la imagen del lightbox se generan por separado. Usar
+// project.image.src para el lightbox arrastraría el archivo original sin
+// comprimir (GradaLibre-1 pesaba 407 KB) al directorio de salida.
+const fullsize = await getImage({ src: project.image, width: 1600, quality: 78, format: 'webp' });
+---
+
+<div class="gallery-item" data-category={project.category}>
+  <figure class="portfolio-editorial-work">
+    <a
+      href={fullsize.src}
+      title={project.alt}
+      data-project-image
+      data-project-title={project.title}
+      data-project-description={project.alt}
+      class="featured-project-image"
+      aria-label={`Ampliar imagen: ${project.alt}`}
+    >
+      <Image
+        src={project.image}
+        alt={project.alt}
+        width={800}
+        widths={[400, 600, 800]}
+        sizes="(min-width: 1320px) 397px, (min-width: 992px) calc((100vw - 128px) / 3), (min-width: 768px) calc((100vw - 104px) / 2), calc(100vw - 40px)"
+        quality={70}
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : 'auto'}
+        decoding="async"
+      />
+      <span class="featured-project-zoom">
+        <Icon name="zoom-in" />
+      </span>
+    </a>
+    <figcaption>
+      <h2>{project.title}</h2>
+      <p>{project.alt}</p>
+    </figcaption>
+  </figure>
+</div>
+
+<style is:global>
+  .portfolio-editorial-work {
+    padding-bottom: 24px;
+  }
+  .portfolio-editorial-work figcaption {
+    padding-top: 18px;
+  }
+  .editorial-site .portfolio-editorial-work h2 {
+    font-size: 1.3rem;
+    letter-spacing: -0.035em;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+  .portfolio-editorial-work p {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: var(--ink-muted);
+  }
+</style>

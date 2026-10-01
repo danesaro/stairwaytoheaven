@@ -1,182 +1,72 @@
 ---
-const {
-  title = 'Gradas & Gradas',
-  description = 'Empresa caleña de gradas y escaleras con operación en el área metropolitana de Cali y algunos municipios del Valle del Cauca.',
-} = Astro.props;
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import Seo from '../components/Seo.astro';
+import { site } from '../data/site';
 
-const currentPath = Astro.url.pathname;
-const isActive = (href: string) => currentPath === href;
+import '../styles/base.css';
+import '../styles/editorial.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Ruta canónica relativa, p. ej. `/servicios`. */
+  path?: string;
+  ogImage?: string;
+}
+
+const { title, description, path = Astro.url.pathname, ogImage } = Astro.props;
+const fontsUrl =
+  'https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap';
 ---
 
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang={site.lang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content={site.themeColor} />
 
-    <title>{title}</title>
+    <title>{title === site.name ? `${site.name} | Gradas prefabricadas en Cali` : `${title} | ${site.name}`}</title>
     <meta name="description" content={description} />
-    <meta
-      name="keywords"
-      content="gradas, escaleras, Cali, prefabricados, mármol, mantenimiento, pasamanos, cerrajería"
-    />
 
-    <!-- Favicons -->
-    <link rel="icon" href="/assets/img/logos/rounded_profile_pic.png" />
-    <link rel="apple-touch-icon" href="/assets/img/rounded_profile_pic.png" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href={fontsUrl} media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href={fontsUrl} />
+    </noscript>
 
-    <!-- Vendor CSS Files -->
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
-    <!-- Template Main CSS File -->
-    <link href="/assets/css/main.css" rel="stylesheet" />
+    <Seo title={title} description={description} path={path} image={ogImage} />
   </head>
 
-  <body>
-    <!-- ======= Header ======= -->
-    <header id="header" class="header d-flex align-items-center">
-      <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-        <a href="/inicio" class="logo d-flex align-items-center">
-          <img src="/assets/img/logos/rounded_profile_pic.png" alt="Logo Gradas &amp; Gradas" />
-          <h1>
-            Gradas&Gradas<span>.</span>
-          </h1>
-        </a>
+  <body id="top" class="editorial-site">
+    <a href="#main" class="skip-link">
+      Saltar al contenido principal
+    </a>
 
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a href="/inicio" class={isActive('/inicio') ? 'active' : ''}>Inicio</a></li>
-            <li><a href="/acerca-de-nosotros" class={isActive('/acerca-de-nosotros') ? 'active' : ''}>Acerca de nosotros</a></li>
-            <li><a href="/servicios" class={isActive('/servicios') ? 'active' : ''}>Servicios</a></li>
-            <li><a href="/galeria" class={isActive('/galeria') ? 'active' : ''}>Galería</a></li>
-            <li><a href="/contactanos" class={isActive('/contactanos') ? 'active' : ''}>Contáctanos</a></li>
-            <li>
-              <a href="https://wa.link/gradasygradas" target="_blank">
-                <img src="/assets/img/logos/whatsapp.png" alt="Enlace a Whatsapp" width="30" height="30" />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/gradasygradas" target="_blank">
-                <img src="/assets/img/logos/facebook.png" alt="Enlace a Facebook" width="30" height="30" />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/gradasygradas" target="_blank">
-                <img src="/assets/img/logos/instagram.png" alt="Enlace a Instagram" width="30" height="30" />
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- .navbar -->
-      </div>
-    </header>
-    <!-- End Header -->
+    <SiteHeader />
 
     <slot />
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-      <div class="footer-content position-relative">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="footer-info">
-                <h3>Gradas &amp; Gradas</h3>
-                <p>
-                  Calle 84 Norte #8N-36<br />
-                  Ciudadela Floralia, Cali, Valle del Cauca, Colombia<br /><br />
-                  <strong>Teléfono:</strong> +57 316 576 3232<br />
-                  <strong>Correo electrónico:</strong> gradasygradascali@gmail.com<br />
-                </p>
-                <div class="social-links d-flex mt-3">
-                  <a
-                    href="https://wa.link/gradasygradas"
-                    target="_blank"
-                    class="d-flex align-items-center justify-content-center"
-                    ><i class="bi bi-whatsapp"></i
-                  ></a>
-                  <a
-                    href="https://www.facebook.com/gradasygradas"
-                    target="_blank"
-                    class="d-flex align-items-center justify-content-center"
-                    ><i class="bi bi-facebook"></i
-                  ></a>
-                  <a
-                    href="https://www.instagram.com/gradasygradas"
-                    target="_blank"
-                    class="d-flex align-items-center justify-content-center"
-                    ><i class="bi bi-instagram"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
+    <SiteFooter />
 
-            <div class="col-lg-2 col-md-3 footer-links">
-              <h4>Enlaces útiles</h4>
-              <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="/acerca-de-nosotros">Acerca de nosotros</a></li>
-                <li><a href="/servicios">Servicios</a></li>
-              </ul>
-            </div>
+    <script>
+      import { initPage } from '../scripts/page';
 
-            <div class="col-lg-2 col-md-3 footer-links">
-              <h4>Nuestros servicios</h4>
-              <ul>
-                <li><a href="#">Fabricación</a></li>
-                <li><a href="#">Instalación</a></li>
-                <li><a href="#">Asesoría</a></li>
-                <li><a href="#">Pasamanos</a></li>
-                <li><a href="#">Mantenimiento</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-legal text-center position-relative">
-        <div class="container">
-          <div class="copyright">
-            &copy; Copyright <strong><span>Gradas&Gradas</span></strong>. All Rights Reserved
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- End Footer -->
-
-    <a href="#" class="scroll-top d-flex align-items-center justify-content-center">
-      <i class="bi bi-arrow-up-short"></i>
-    </a>
-
-    <div id="preloader"></div>
-
-    <!-- Vendor JS Files -->
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" is:inline></script>
-    <script src="/assets/vendor/aos/aos.js" is:inline></script>
-    <script src="/assets/vendor/glightbox/js/glightbox.min.js" is:inline></script>
-    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js" is:inline></script>
-    <script src="/assets/vendor/swiper/swiper-bundle.min.js" is:inline></script>
-    <script src="/assets/vendor/purecounter/purecounter_vanilla.js" is:inline></script>
-    <script src="/assets/vendor/php-email-form/validate.js" is:inline></script>
-
-    <!-- Template Main JS File -->
-    <script src="/assets/js/main.js" is:inline></script>
+      // Mantener la navegación nativa: cada documento inicializa sus controles.
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPage, { once: true });
+      } else {
+        initPage();
+      }
+    </script>
   </body>
 </html>
-

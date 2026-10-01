@@ -1,0 +1,24 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+interface Props {
+  title?: string;
+}
+const { title = 'Una escalera nueva o una nueva vida para la que tienes.' } = Astro.props;
+---
+
+<section class="editorial-consultation editorial-section">
+  <div class="editorial-shell editorial-consultation-layout">
+    <div>
+      <p class="editorial-eyebrow">Hablemos de tu espacio</p>
+      <h2>{title}</h2>
+      <p>
+        Cuéntanos si buscas gradas prefabricadas, mantenimiento o remodelación. Puedes compartir una foto y
+        medidas aproximadas para empezar.
+      </p>
+    </div>
+    <a class="editorial-button" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+      <Icon name="whatsapp" /> Cotizar por WhatsApp
+    </a>
+  </div>
+</section>

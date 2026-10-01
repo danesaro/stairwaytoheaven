@@ -1,9 +1,30 @@
 {
-  "rewrites": [
-    { "source": "/inicio", "destination": "/index.html" },
-    { "source": "/acerca-de-nosotros", "destination": "/about.html" },
-    { "source": "/servicios", "destination": "/services.html" },
-    { "source": "/galeria", "destination": "/projects.html" },
-    { "source": "/contactanos", "destination": "/contact.html" }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/inicio",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Permissions-Policy", "value": "geolocation=(self), camera=(), microphone=()" }
+      ]
+    }
   ]
 }

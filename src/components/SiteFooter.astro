@@ -1,0 +1,214 @@
+---
+import Icon from './Icon.astro';
+import { navLinks, site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer id="footer" class="editorial-footer">
+  <div class="editorial-shell">
+    <div class="editorial-footer-main">
+      <div class="editorial-footer-brand">
+        <a href="/" class="editorial-footer-logo" aria-label={`${site.name} — ir al inicio`}>
+          Gradas <span>&amp;</span> Gradas
+        </a>
+        <p>
+          Gradas prefabricadas, mantenimiento
+          <br />
+          y remodelación de escaleras.
+          <br />
+          En Cali, desde {site.founded}.
+        </p>
+      </div>
+      <nav aria-label="Navegación del pie de página">
+        <h2>Explora</h2>
+        {navLinks.map((link) => (
+          <a href={link.href}>{'footerLabel' in link ? link.footerLabel : link.label}</a>
+        ))}
+      </nav>
+      <div class="editorial-footer-contact">
+        <h2>Hablemos de tu proyecto</h2>
+        <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+          WhatsApp: {site.phone}
+        </a>
+        <a href={`tel:${site.phoneHref}`}>Llamar: {site.phone}</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <address>
+          {site.address.street}
+          <br />
+          {site.address.neighborhood}, {site.address.city}
+        </address>
+      </div>
+    </div>
+    <div class="editorial-footer-bottom">
+      <p>
+        &copy; {year} {site.name}. Todos los derechos reservados.
+      </p>
+      <div class="editorial-footer-social">
+        {site.social.map((social) => (
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${social.name} (abre en una pestaña nueva)`}
+          >
+            <Icon name={social.icon} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="#top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Volver arriba">
+  <Icon name="arrow-up-short" />
+</a>
+
+<script>
+  const scrollTop = document.querySelector<HTMLElement>('.scroll-top');
+  if (scrollTop) {
+    const toggle = () => scrollTop.classList.toggle('active', window.scrollY > 300);
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+    scrollTop.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+      });
+    });
+  }
+</script>
+
+<style is:global>
+  .editorial-footer {
+    background: var(--ink);
+    color: var(--surface-base);
+    padding-top: 64px;
+  }
+  .editorial-footer-main {
+    display: grid;
+    grid-template-columns: 1.4fr 0.7fr 1.2fr;
+    gap: 60px;
+    padding-bottom: 48px;
+  }
+  .editorial-site .editorial-footer-logo {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    min-height: 44px;
+    font: 600 clamp(1.3rem, 2vw, 1.75rem)/1.4 var(--font-display);
+    letter-spacing: -0.055em;
+    color: var(--surface-base);
+  }
+  .editorial-footer-logo span {
+    color: var(--accent);
+  }
+  .editorial-footer-brand p {
+    color: #cbc5b9;
+    font-size: 1rem;
+    margin: 14px 0 0;
+  }
+  .editorial-footer h2 {
+    color: var(--surface-base);
+    font: 600 1rem/1.5 var(--font-body);
+    margin: 8px 0 14px;
+  }
+  .editorial-site .editorial-footer :where(nav, .editorial-footer-contact) a {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 44px;
+    padding-block: 8px;
+    color: #cbc5b9;
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+  .editorial-site .editorial-footer a:hover {
+    color: var(--surface-paper);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .editorial-footer address {
+    color: #cbc5b9;
+    font-size: 1rem;
+    font-style: normal;
+    margin: 14px 0 0;
+  }
+  .editorial-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    padding-block: 20px;
+    border-top: 1px solid #57534b;
+  }
+  .editorial-footer-bottom p {
+    font-size: 0.85rem;
+    color: #cbc5b9;
+    margin: 0;
+  }
+  .editorial-footer-social {
+    display: flex;
+    gap: 8px;
+  }
+  .editorial-site .editorial-footer-social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: var(--surface-base);
+  }
+  .scroll-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: 15px;
+    background: var(--accent);
+    transition: opacity 180ms ease-out;
+  }
+  .scroll-top.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  .editorial-site .scroll-top {
+    width: 44px;
+    height: 44px;
+    z-index: 100;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+  }
+  .editorial-site .scroll-top .icon {
+    font-size: 24px;
+    color: var(--ink);
+  }
+  @media (max-width: 1100px) {
+    .editorial-footer-main {
+      gap: 32px;
+      grid-template-columns: 1fr 0.7fr 1.3fr;
+    }
+  }
+  @media (max-width: 899px) {
+    .editorial-footer-main {
+      grid-template-columns: 1fr 1fr;
+    }
+    .editorial-footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 599px) {
+    .editorial-footer-main {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .editorial-footer-brand {
+      grid-column: auto;
+    }
+    .editorial-footer-bottom {
+      align-items: start;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

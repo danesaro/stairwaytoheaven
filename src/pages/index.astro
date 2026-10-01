@@ -1,7 +1,201 @@
 ---
-export const prerender = false;
+import { Image } from 'astro:assets';
+import MainLayout from '../layouts/MainLayout.astro';
+import Icon from '../components/Icon.astro';
+import FeaturedProject from '../components/FeaturedProject.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../data/site';
+import { homeSolutions, selectedWorks } from '../data/home';
+import prefabricatedStair from '../assets/img/projects/GradaLibre-1.webp';
+import workshop from '../assets/img/services/servicios-1.webp';
+
+const whatsapp = site.whatsapp;
 ---
 
-<script>
-  window.location.href = '/inicio';
-</script>
+<MainLayout
+  title={site.name}
+  description="Gradas prefabricadas en Cali: fabricación e instalación. También realizamos mantenimiento, reparación y remodelación de escaleras. Cotiza por WhatsApp."
+  path="/"
+>
+  <main id="main" class="editorial-home">
+    <section class="home-hero editorial-shell" aria-labelledby="hero-title">
+      <div class="home-hero-copy">
+        <p class="editorial-eyebrow">Fabricación e instalación · Cali</p>
+        <h1 id="hero-title">
+          Gradas <span>prefabricadas.</span>
+        </h1>
+        <p class="home-hero-description">
+          Fabricamos e instalamos gradas prefabricadas. También cuidamos y renovamos las que ya tienes con
+          mantenimiento, reparación y remodelación de escaleras.
+        </p>
+        <div class="home-hero-actions">
+          <a href={whatsapp} class="editorial-button" target="_blank" rel="noopener noreferrer">
+            <Icon name="whatsapp" /> Cotizar por WhatsApp
+          </a>
+          <a href="#proyectos" class="editorial-text-link">
+            Ver proyectos <Icon name="arrow-down-right" />
+          </a>
+        </div>
+        <p class="home-hero-note">
+          Para construir, cuidar y renovar.
+          <br />
+          En Cali, desde {site.founded}.
+        </p>
+      </div>
+      <figure class="home-hero-photo">
+        <Image
+          src={prefabricatedStair}
+          alt="Grada caracol exterior con peldaños claros y pasamanos metálico junto a una vivienda"
+          width={1000}
+          widths={[480, 720, 1000]}
+          sizes="(min-width: 1280px) 590px, (min-width: 900px) 45vw, calc(100vw - 40px)"
+          format="webp"
+          quality={78}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <figcaption>
+          <span>Hecho por Gradas &amp; Gradas</span>
+          <span>Grada caracol · Exterior</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="proyectos" class="home-projects editorial-section" aria-labelledby="projects-title">
+      <div class="editorial-shell">
+        <div class="editorial-section-heading">
+          <div>
+            <p class="editorial-eyebrow">Trabajos seleccionados</p>
+            <h2 id="projects-title">
+              Cada espacio,
+              <br />
+              un nuevo recorrido.
+            </h2>
+          </div>
+          <div class="editorial-section-intro">
+            <p>
+              Interiores, exteriores y detalles. Explora algunas de las soluciones que hemos llevado a la
+              realidad.
+            </p>
+            <a href="/galeria" class="editorial-text-link">
+              Ver toda la galería <Icon name="arrow-up-right" />
+            </a>
+          </div>
+        </div>
+        <div class="featured-projects-grid">
+          {selectedWorks.map((project, index) => (
+            <FeaturedProject {...project} number={`0${index + 1}`} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="soluciones" class="home-solutions editorial-section" aria-labelledby="solutions-title">
+      <div class="editorial-shell home-solutions-layout">
+        <div class="home-solutions-intro">
+          <p class="editorial-eyebrow">¿Qué tienes en mente?</p>
+          <h2 id="solutions-title">
+            Hay una solución
+            <br />
+            para tu hogar.
+          </h2>
+          <p>
+            Gradas prefabricadas para una obra nueva, mantenimiento para conservar tu escalera o remodelación
+            para darle otro aspecto. Empecemos por lo que necesitas.
+          </p>
+          <a href="/servicios" class="editorial-text-link">
+            Conoce nuestros servicios <Icon name="arrow-up-right" />
+          </a>
+        </div>
+        <ol class="home-solutions-list">
+          {homeSolutions.map((solution) => (
+            <li>
+              <span class="solution-number" aria-hidden="true">
+                {solution.number}
+              </span>
+              <div>
+                <h3>{solution.title}</h3>
+                <p>{solution.description}</p>
+                <a class="editorial-text-link" href={solution.href}>
+                  Explorar solución <Icon name="arrow-up-right" />
+                </a>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="home-story editorial-section" aria-labelledby="story-title">
+      <div class="editorial-shell home-story-layout">
+        <figure class="home-story-photo">
+          <Image
+            src={workshop}
+            alt="Trabajo de acabado durante la instalación de una escalera caracol"
+            width={900}
+            widths={[400, 650, 900]}
+            sizes="(min-width: 1280px) 590px, (min-width: 900px) 45vw, calc(100vw - 40px)"
+            format="webp"
+            quality={75}
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>El trabajo detrás de cada escalera.</figcaption>
+        </figure>
+        <div class="home-story-copy">
+          <p class="editorial-eyebrow">Un oficio, desde {site.founded}</p>
+          <h2 id="story-title">
+            De nuestras manos
+            <br />a tu hogar.
+          </h2>
+          <p>
+            Somos Gradas &amp; Gradas, una empresa que nació en Cali. Nuestra especialidad es la fabricación e
+            instalación de gradas prefabricadas.
+          </p>
+          <p>
+            También realizamos mantenimiento, reparación y remodelación de escaleras existentes, además de
+            pasamanos. Te acompañamos tanto para construir como para renovar.
+          </p>
+          <a href="/acerca-de-nosotros" class="editorial-text-link">
+            Conoce nuestra historia <Icon name="arrow-up-right" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="home-contact editorial-section" aria-labelledby="contact-title">
+      <div class="editorial-shell home-contact-layout">
+        <div class="home-contact-copy">
+          <p class="editorial-eyebrow">Tu proyecto empieza aquí</p>
+          <h2 id="contact-title">
+            Cuéntanos qué
+            <br />
+            quieres mejorar.
+          </h2>
+          <p>
+            ¿Necesitas gradas prefabricadas, mantenimiento o una remodelación? Escríbenos por WhatsApp y
+            cuéntanos cómo es tu espacio o tu escalera actual.
+          </p>
+          <a href={whatsapp} class="editorial-button" target="_blank" rel="noopener noreferrer">
+            <Icon name="whatsapp" /> Cotizar por WhatsApp
+          </a>
+          <div class="home-contact-guide">
+            <h3>Para empezar, puedes compartir:</h3>
+            <ul>
+              <li>Qué necesitas y en qué ciudad sería.</li>
+              <li>Una foto del espacio o de la escalera que quieres intervenir.</li>
+              <li>Medidas aproximadas, si las tienes.</li>
+            </ul>
+            <p>No necesitas tener todos los detalles resueltos.</p>
+          </div>
+        </div>
+        <div class="home-contact-form-panel">
+          <h3>¿Prefieres dejarnos un mensaje?</h3>
+          <p>Completa estos datos y nos pondremos en contacto contigo.</p>
+          <ContactForm idPrefix="home" />
+        </div>
+      </div>
+    </section>
+  </main>
+</MainLayout>

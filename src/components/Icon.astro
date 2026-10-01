@@ -1,0 +1,40 @@
+---
+import { icons, type IconName } from '../data/icons';
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+const evenOdd = ['list', 'arrow-up-right', 'arrow-down-right', 'arrow-up-short', 'arrows-angle-expand'];
+---
+
+<!-- Decorativo: el texto o aria-label del control proporciona su nombre. -->
+<svg
+  class:list={['icon', className]}
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  viewBox="0 0 16 16"
+  fill="currentColor"
+  aria-hidden="true"
+  focusable="false"
+>
+  {icons[name].map((path, index) => (
+    <path
+      d={path}
+      fill-rule={evenOdd.includes(name) || (name === 'zoom-in' && index !== 1) ? 'evenodd' : undefined}
+    />
+  ))}
+</svg>
+
+<style>
+  .icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    vertical-align: -0.125em;
+  }
+</style>

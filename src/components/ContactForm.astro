@@ -1,0 +1,254 @@
+---
+interface Props {
+  /** Prefijo único para asociar los labels y la ayuda a cada campo. */
+  idPrefix: string;
+}
+
+const { idPrefix } = Astro.props;
+---
+
+<form class="contact-form" action="/api/contact" method="post">
+  <div class="form-fields">
+    <div>
+      <label for={`${idPrefix}-name`}>Nombre</label>
+      <input
+        type="text"
+        id={`${idPrefix}-name`}
+        name="name"
+        placeholder="Tu nombre"
+        autocomplete="name"
+        maxlength="120"
+        required
+      />
+    </div>
+
+    <div>
+      <label for={`${idPrefix}-email`}>Correo electrónico</label>
+      <input
+        type="email"
+        id={`${idPrefix}-email`}
+        name="email"
+        placeholder="Correo electrónico"
+        autocomplete="email"
+        maxlength="200"
+        required
+      />
+    </div>
+
+    <div>
+      <label for={`${idPrefix}-phone`}>
+        Celular <span>(opcional)</span>
+      </label>
+      <input
+        type="tel"
+        id={`${idPrefix}-phone`}
+        name="phone"
+        placeholder="Celular (opcional)"
+        autocomplete="tel"
+        inputmode="tel"
+        maxlength="40"
+      />
+    </div>
+
+    <div>
+      <label for={`${idPrefix}-message`}>¿Qué tienes en mente?</label>
+      <textarea
+        id={`${idPrefix}-message`}
+        name="message"
+        rows={5}
+        placeholder="¿Necesitas gradas prefabricadas, mantenimiento o remodelación? Cuéntanos dónde sería el trabajo."
+        aria-describedby={`${idPrefix}-message-help`}
+        minlength="10"
+        maxlength="4000"
+        required
+      ></textarea>
+      <p id={`${idPrefix}-message-help`} class="form-help">
+        Si tienes medidas aproximadas, también puedes incluirlas.
+      </p>
+    </div>
+
+    <div class="form-honeypot" aria-hidden="true">
+      <label for={`${idPrefix}-website`}>No completar este campo</label>
+      <input type="text" id={`${idPrefix}-website`} name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div>
+      <!--
+        Región live siempre presente: si se inserta con display:none y luego se
+        muestra, muchos lectores de pantalla no la anuncian.
+      -->
+      <p class="form-status" role="status" aria-live="polite"></p>
+
+      <button type="submit">Enviar mensaje</button>
+    </div>
+  </div>
+</form>
+
+<script>
+  const MESSAGES = {
+    success: '¡Gracias! Recibimos tu mensaje y nos pondremos en contacto contigo lo más pronto posible.',
+    generic: 'No pudimos enviar tu mensaje. Inténtalo más tarde o escríbenos por WhatsApp.',
+    network: 'Hubo un problema de conexión. Revisa tu internet e inténtalo de nuevo.',
+  } as const;
+
+  document.querySelectorAll<HTMLFormElement>('.contact-form').forEach((form) => {
+    const status = form.querySelector<HTMLElement>('.form-status');
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+    const setStatus = (message: string, state: 'loading' | 'success' | 'error') => {
+      if (!status) return;
+      status.dataset.state = state;
+      status.textContent = message;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (button?.disabled || !form.reportValidity()) return;
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      // Honeypot: los bots llenan todos los campos, los humanos nunca ven este.
+      if (payload.website) return;
+
+      setStatus('Enviando tu mensaje…', 'loading');
+      button?.setAttribute('disabled', '');
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json().catch(() => null);
+
+        if (!response.ok || !result?.ok) {
+          setStatus(result?.error || MESSAGES.generic, 'error');
+          return;
+        }
+
+        form.reset();
+        setStatus(MESSAGES.success, 'success');
+      } catch {
+        setStatus(MESSAGES.network, 'error');
+      } finally {
+        button?.removeAttribute('disabled');
+      }
+    });
+  });
+</script>
+
+<style>
+  .form-fields {
+    display: grid;
+    gap: 16px;
+  }
+  .contact-form label {
+    display: block;
+    color: var(--ink);
+    font: 600 1rem/1.4 var(--font-body);
+    margin-bottom: 8px;
+  }
+  .contact-form label span {
+    font-weight: 400;
+    color: var(--ink-muted);
+  }
+  .contact-form :where(input, textarea) {
+    display: block;
+    width: 100%;
+    border: 1px solid #9c9587;
+    border-radius: 2px;
+    padding: 12px 14px;
+    min-height: 48px;
+    background: var(--surface-paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.45 var(--font-body);
+    box-shadow: none;
+  }
+  .contact-form :where(input, textarea)::placeholder {
+    color: var(--ink-muted);
+    opacity: 1;
+  }
+  .contact-form :where(input, textarea):focus {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-color: var(--ink);
+    box-shadow: none;
+  }
+  .contact-form textarea {
+    resize: vertical;
+  }
+  .form-help {
+    margin-top: 8px !important;
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+  }
+  .contact-form button[type='submit'] {
+    background: var(--ink);
+    color: var(--surface-paper);
+    min-height: 48px;
+    border: 0;
+    border-radius: 2px;
+    padding: 13px 24px;
+    font: 600 1rem/1.4 var(--font-body);
+  }
+  .contact-form button[type='submit']:hover {
+    background: #454137;
+  }
+  .contact-form button[disabled] {
+    opacity: 0.6;
+    cursor: progress;
+  }
+  .form-status {
+    padding: 0;
+    min-height: 0;
+    margin-bottom: 16px;
+    font: 600 1rem/1.45 var(--font-body);
+    text-align: left;
+  }
+  .form-status[data-state] {
+    padding: 15px;
+  }
+  .form-status[data-state='loading']::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--line);
+    border-top-color: var(--ink);
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: -2px;
+    animation: form-loading 800ms linear infinite;
+  }
+  @keyframes form-loading {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .form-status[data-state='success'] {
+    background: #e0ebdf;
+    color: #23552b;
+  }
+  .form-status[data-state='error'] {
+    background: #f4e0d9;
+    color: #842f20;
+  }
+  .form-honeypot {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  .form-honeypot input {
+    width: 1px !important;
+    min-width: 0;
+    padding: 0 !important;
+  }
+</style>

@@ -4,8 +4,11 @@
 
 # Node modules
 node_modules/
-package-lock.json
 yarn.lock
+
+# Build
+dist/
+.astro/
 
 # Logs
 *.log
@@ -32,8 +35,14 @@ desktop.ini
 
 # Archivos de desarrollo local
 dev-tools/
+docs/
 
 # Variables de entorno
 .env
 .env.local
 .env.*.local
+!.env.example
+
+# El lockfile se versiona: sin él `npm ci` no puede reproducir el árbol de
+# dependencias y los builds dejan de ser deterministas.
+!package-lock.json

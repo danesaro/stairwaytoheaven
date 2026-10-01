@@ -1,0 +1,10 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "src/**/*"],
+  "exclude": ["dist", ".vercel", "docs", "dev-tools", "public"],
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "allowJs": true,
+    "checkJs": false
+  }
+}

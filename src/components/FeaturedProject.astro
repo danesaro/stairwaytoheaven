@@ -1,0 +1,45 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Icon from './Icon.astro';
+import type { SelectedWork } from '../data/home';
+
+interface Props extends SelectedWork {
+  number: string;
+}
+
+const { image, title, description, alt, number } = Astro.props;
+const fullsize = await getImage({ src: image, width: 1600, quality: 78, format: 'webp' });
+---
+
+<article class="featured-project">
+  <a
+    href={fullsize.src}
+    class="featured-project-image glightbox"
+    data-gallery="selected-projects"
+    aria-label={`Ampliar imagen: ${title}`}
+  >
+    <Image
+      src={image}
+      alt={alt}
+      width={800}
+      widths={[400, 600, 800]}
+      sizes="(min-width: 1280px) 400px, (min-width: 768px) 31vw, 100vw"
+      quality={75}
+      format="webp"
+      loading="lazy"
+      decoding="async"
+    />
+    <span class="featured-project-zoom" aria-hidden="true">
+      <Icon name="arrows-angle-expand" />
+    </span>
+  </a>
+  <div class="featured-project-caption">
+    <span class="featured-project-number" aria-hidden="true">
+      {number}
+    </span>
+    <div>
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  </div>
+</article>

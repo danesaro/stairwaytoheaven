@@ -1,0 +1,9 @@
+# Cache busting para las imágenes servidas por astro:assets (src/_astro/*)
+public/_headers
+/.vercel
+dist
+node_modules
+docs
+dev-tools
+package-lock.json
+public/assets/vendor
